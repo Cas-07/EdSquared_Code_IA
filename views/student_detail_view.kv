@@ -1,0 +1,131 @@
+
+<StudentDetailView>:
+    name: 'student_detail_view'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(60), dp(20), dp(20)]
+        spacing: 10
+
+        canvas.before:
+            Color:
+                rgba: (0.710, 0.471, 0.812, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # BoxLayout:
+        #     orientation: 'horizontal'
+        #     size_hint: 1, 0.1
+        #     Label:
+        #         id: student_name
+        #         text: ''
+        #         size_hint_x: 1
+        #         font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+            padding: [dp(40), 0, 0, dp(15)]
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            Label:
+                id: student_name
+                text: ''
+                font_size: '24sp'
+                halign: 'center'
+                valign: 'center'
+                color: 1, 1, 1, 1
+                bold: True
+                size_hint_x: None
+                width: self.texture_size[0]
+
+            Widget:
+                width: dp(10)
+
+            MDIconButton:
+                icon: 'home'
+                icon_size: '35sp'
+                pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+                size_hint: None, None
+                size: dp(40), dp(40)
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                on_release:
+                    app.root.transition.direction = 'right'
+                    app.root.current = 'admin_dashboard_view'
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            Label:
+                text: 'Subject'
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint_x: 0.25
+                halign: 'center'
+                font_size: '19sp'
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 0.1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+            Label:
+                text: 'Grade'
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint_x: 0.25
+                halign: 'center'
+                font_size: '19sp'
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 0.1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+            Label:
+                text: ''
+                size_hint_x: 0.25
+                halign: 'center'
+                font_size: '19sp'
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 0.1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+        ScrollView:
+            GridLayout:
+                id: subjects_grid
+                cols: 3
+                spacing: 10
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: dp(40)
+                row_force_default: True
+                col_default_width: self.width / 3
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            padding: [0, 10, 0, 0]
+
+            MDRaisedButton:
+                text: 'Menu'
+                background_normal: ''
+                background_color: 1, 1, 1, 1
+                color: 0, 0, 0, 1
+                # size_hint_y: None
+                height: dp(40)
+                size_hint_x: 1
+                md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                font_size: '19sp'
+                on_release:
+                    # app.root.transition.direction = 'right'
+                    root.show_menu()

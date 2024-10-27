@@ -1,0 +1,116 @@
+
+<StudentDashboardView>:
+    name: 'student_dashboard_view'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(50), dp(20), dp(20)]
+        spacing: 20
+
+        canvas.before:
+            Color:
+                rgba: (0.710, 0.471, 0.812, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: 'My Dashboard'
+            font_size: '24sp'
+            color: 1, 1, 1, 1
+            size_hint: 1, 0.2
+            bold: True
+            font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+
+        MDRaisedButton:
+            text: 'View Grades'
+            size_hint: 1, 0.2
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            size_hint_x: 1
+            font_size: '22sp'
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            on_release:
+                app.root.transition.direction = 'left'
+                app.root.change_screen('student_grades_view')
+
+        MDRaisedButton:
+            text: 'Add Grades'
+            size_hint: 1, 0.2
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            font_size: '22sp'
+            size_hint_x: 1
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            on_release:
+                app.root.transition.direction = 'left'
+                app.root.change_screen('student_add_grades_view')
+
+        MDRaisedButton:
+            text: 'View Feedback'
+            size_hint: 1, 0.2
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            size_hint_x: 1
+            font_size: '22sp'
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            on_release:
+                app.root.change_screen('student_feedback_view')
+                app.root.transition.direction = 'left'
+
+        MDRaisedButton:
+            text: 'View Homework'
+            size_hint: 1, 0.2
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            font_size: '22sp'
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            on_release:
+                app.root.change_screen('student_homework_view')
+                app.root.transition.direction = 'left'
+
+        MDRaisedButton:
+            text: 'Edit Subjects'
+            size_hint: 1, 0.2
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            font_size: '22sp'
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            on_release:
+                app.root.change_screen('student_edit_subjects_view')
+                app.root.transition.direction = 'left'
+
+        MDRaisedButton:
+            text: 'Add/Remove Tutor'
+            size_hint: 1, 0.2
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            font_size: '22sp'
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            on_release:
+                app.root.change_screen('student_add_admin_view')
+                app.root.transition.direction = 'left'
+
+        MDRaisedButton:
+            text: 'Log out'
+            size_hint: 1, 0.2
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            font_size: '22sp'
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            on_release:
+                app.root.transition.direction = 'right'
+                root.logout()

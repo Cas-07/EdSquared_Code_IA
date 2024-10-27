@@ -1,0 +1,100 @@
+
+<StudentHomeworkView>:
+    name: 'student_homework_view'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(50), dp(20), dp(20)]
+        spacing: 10
+
+        canvas.before:
+            Color:
+                rgba: (0.710, 0.471, 0.812, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: 'View Homework'
+            font_size: '24sp'
+            color: 1, 1, 1, 1
+            size_hint: 1, 0.1
+            bold: True
+            font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+
+        GridLayout:
+            id: homework_grid
+            cols: 2
+            spacing: 10
+            size_hint: 1, 0.7
+
+            # ScrollView:
+            #     BoxLayout:
+            #         orientation: 'horizontal'
+            #         size_hint_y: None
+            #         height: dp(100)
+            #         MDCheckbox:
+            #             id: homework_checkbox
+            #             size_hint: None, None
+            #             size: dp(40), dp(40)
+            #             custom_background_color: 1, 1, 1, 1
+            #         MDTextField:
+            #             id: homework_text_0
+            #             mode: "fill"
+            #             text: ''
+            #             multiline: True
+            #             readonly: True
+            #             background_color: 1, 1, 1, 1
+            #             foreground_color: 0, 0, 0, 1
+            #             size_hint_x: 1
+            #             font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+            ScrollView:
+                size_hint: 1, 0.8
+                BoxLayout:
+                    id: homework_box
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+
+                    Widget:
+                        size_hint_y: None
+                        height: dp(30)
+
+                    GridLayout:
+                        id: homework_grid
+                        cols: 2
+                        spacing: [10, 20]
+                        size_hint_y: None
+                        height: self.minimum_height
+                        font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            spacing: 10
+
+            MDRaisedButton:
+                text: '← Go to dashboard'
+                background_normal: ''
+                background_color: 1, 1, 1, 1
+                color: 0, 0, 0, 1
+                size_hint_x: 0.4
+                height: dp(40)
+                md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                font_size: '19sp'
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                on_release:
+                    app.root.transition.direction = 'right'
+                    app.root.current = 'student_dashboard_view'
+
+            MDRaisedButton:
+                text: 'Save'
+                background_normal: ''
+                background_color: 1, 1, 1, 1
+                color: 0, 0, 0, 1
+                height: dp(40)
+                size_hint_x: 0.4
+                md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                font_size: '19sp'
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                on_release: root.save_homework_status()

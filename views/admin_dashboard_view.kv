@@ -1,0 +1,180 @@
+
+<AdminDashboardView>:
+    name: 'admin_dashboard_view'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(60), dp(20), dp(20)]
+        spacing: dp(10)
+
+        canvas.before:
+            Color:
+                rgba: (0.710, 0.471, 0.812, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+            padding: [dp(40), 0, 0, dp(10)]
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            Label:
+                text: 'My Dashboard'
+                font_size: '24sp'
+                halign: 'center'
+                valign: 'center'
+                color: 1, 1, 1, 1
+                bold: True
+                size_hint_x: None
+                width: self.texture_size[0]
+
+            Widget:
+                width: dp(10)
+
+            MDRaisedButton:
+                id: tutor_code_display
+                text: 'Get Code'
+                font_size: '24sp'
+                halign: 'center'
+                valign: 'center'
+                pos_hint: {'center_y': 0.5}
+                md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                size_hint_x: None
+                bold: True
+                on_release: root.get_tutor_code()
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+            height: dp(40)
+
+            Label:
+                text: 'Name'
+                bold: True
+                color: 1, 1, 1, 1
+                halign: 'center'
+                font_size: '19sp'
+                # text_size: self.size
+                size_hint_x: 0.33
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 0.1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+
+            Label:
+                text: 'Surname'
+                bold: True
+                color: 1, 1, 1, 1
+                halign: 'center'
+                font_size: '19sp'
+                # text_size: self.size
+                size_hint_x: 0.33
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 0.1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+
+
+            Label:
+                text: ''
+                bold: True
+                color: 1, 1, 1, 1
+                halign: 'center'
+                font_size: '19sp'
+                # text_size: self.size
+                size_hint_x: 0.33
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 0.1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+        ScrollView:
+            size_hint: 1, 0.6
+            GridLayout:
+                id: students_grid
+                halign: 'center'
+                cols: 3
+                spacing: 7
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: dp(40)
+                row_force_default: True
+                col_default_width: self.width / 3
+
+        Label:
+            id: no_students_info
+            text: ""
+            markup: True
+            color: 1, 1, 1, 1
+            bold: True
+            size_hint_y: None
+            height: 0
+            text_size: self.width, None
+            height: self.texture_size[1]
+            halign: 'center'
+            valign: 'middle'
+            font_size: '22sp'
+            on_ref_press:
+                import webbrowser
+                webbrowser.open('https://github.com/Cas-07/EdSquared_documentation/blob/main/support.md')
+
+        # BoxLayout:
+        #     orientation: 'horizontal'
+        #     # size_hint: 1, 0.1
+        #     padding: [0, 10, 0, 0]
+        #     spacing: 10
+        #     MDRaisedButton:
+        #         text: 'Sort by Surname'
+        #         background_normal: ''
+        #         background_color: 1, 1, 1, 1
+        #         color: 0, 0, 0, 1
+        #         # size_hint_y: None
+        #         height: dp(40)
+        #         size_hint_x: 1
+        #         md_bg_color: 0.6667, 0.4196, 0.7765, 1
+        #         font_size: '16sp'
+        #         on_release:
+        #             root.admin_dashboard("LAST_NAME")
+        #
+        #     MDRaisedButton:
+        #         text: 'Remove Student'
+        #         background_normal: ''
+        #         background_color: 1, 1, 1, 1
+        #         color: 0, 0, 0, 1
+        #         # size_hint_y: None
+        #         height: dp(40)
+        #         size_hint_x: 1
+        #         md_bg_color: 0.6667, 0.4196, 0.7765, 1
+        #         font_size: '16sp'
+        #         on_release:
+        #             app.root.transition.direction = 'left'
+        #             app.root.current = 'admin_remove_student_view'
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            padding: [0, 10, 0, 0]
+
+            MDRaisedButton:
+                text: 'Menu'
+                background_normal: ''
+                background_color: 1, 1, 1, 1
+                color: 0, 0, 0, 1
+                # size_hint_y: None
+                height: dp(40)
+                size_hint_x: 1
+                md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                font_size: '19sp'
+                on_release:
+                    # app.root.transition.direction = 'right'
+                    root.show_menu()

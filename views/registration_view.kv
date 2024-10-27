@@ -1,0 +1,224 @@
+
+<RegistrationView>:
+    name: 'registration_view'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(50), dp(20), dp(20)]
+        spacing: 10
+
+        canvas.before:
+            Color:
+                rgba: (0.710, 0.471, 0.812, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: 'Register'
+            font_size: '32sp'
+            color: 1, 1, 1, 1
+            bold: True
+            font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+
+        # Image:
+        #     source: 'utils/graphics/logo.png'
+
+        Widget:
+            size_hint_y: 0.05
+
+        MDTextField:
+            id: first_name_input
+            hint_text: 'First Name'
+            multiline: False
+            size_hint_y: None
+            mode: "line"
+            text_color_normal: 1, 1, 1, 1
+            text_color_focus: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(20)
+            line_color_focus: 1, 1, 1, 1
+            current_hint_text_color: 1, 1, 1, 1
+            hint_text_color_normal: 1, 1, 1, 1
+            hint_text_color_focus: 1, 1, 1, 1
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            opacity: 1
+
+        MDTextField:
+            id: last_name_input
+            hint_text: 'Last Name'
+            multiline: False
+            size_hint_y: None
+            mode: "line"
+            text_color_normal: 1, 1, 1, 1
+            text_color_focus: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(20)
+            line_color_focus: 1, 1, 1, 1
+            current_hint_text_color: 1, 1, 1, 1
+            hint_text_color_normal: 1, 1, 1, 1
+            hint_text_color_focus: 1, 1, 1, 1
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            opacity: 1
+
+        MDTextField:
+            id: email_input
+            hint_text: 'Email'
+            multiline: False
+            size_hint_y: None
+            mode: "line"
+            text_color_normal: 1, 1, 1, 1
+            text_color_focus: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(20)
+            line_color_focus: 1, 1, 1, 1
+            current_hint_text_color: 1, 1, 1, 1
+            hint_text_color_normal: 1, 1, 1, 1
+            hint_text_color_focus: 1, 1, 1, 1
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        MDTextField:
+            id: password_input
+            hint_text: 'Password'
+            password: True
+            multiline: False
+            size_hint_y: None
+            mode: "line"
+            text_color_normal: 1, 1, 1, 1
+            text_color_focus: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(20)
+            line_color_focus: 1, 1, 1, 1
+            current_hint_text_color: 1, 1, 1, 1
+            hint_text_color_normal: 1, 1, 1, 1
+            hint_text_color_focus: 1, 1, 1, 1
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        MDTextField:
+            id: confirm_password_input
+            hint_text: 'Confirm Password'
+            password: True
+            multiline: False
+            size_hint_y: None
+            mode: "line"
+            text_color_normal: 1, 1, 1, 1
+            text_color_focus: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(20)
+            line_color_focus: 1, 1, 1, 1
+            current_hint_text_color: 1, 1, 1, 1
+            hint_text_color_normal: 1, 1, 1, 1
+            hint_text_color_focus: 1, 1, 1, 1
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        MDTextField:
+            id: six_digit_code
+            hint_text: 'Tutor Code'
+            multiline: False
+            size_hint_y: None
+            mode: "line"
+            text_color_normal: 1, 1, 1, 1
+            text_color_focus: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(20)
+            line_color_focus: 1, 1, 1, 1
+            current_hint_text_color: 1, 1, 1, 1
+            hint_text_color_normal: 1, 1, 1, 1
+            hint_text_color_focus: 1, 1, 1, 1
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: self.minimum_size
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            MDCheckbox:
+                id: admin_checkbox
+                size_hint: None, None
+                size: dp(40), dp(40)
+                # pos_hint: {'center_y': 0.4}
+                on_active:
+                    generate_code.opacity = 1 if self.active else 0
+                    generate_code.height = dp(40) if self.active else 0
+
+            Label:
+                text: 'Tutor'
+                font_size: '22sp'
+                color: 1, 1, 1, 1
+                size_hint_x: None
+                height: dp(40)
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                width: self.texture_size[0]
+                # pos_hint: {'center_y': 0.4}
+
+        MDSpinner:
+            id: spinner
+            size_hint: None, None
+            color: (1,1,1,1)
+            size: dp(0), dp(0)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            active: False
+
+        MDRaisedButton:
+            id: generate_code
+            text: 'Generate Code'
+            size_hint_y: None
+            disabled: True if not root.validate_fields(first_name_input.text, last_name_input.text, email_input.text, password_input.text, confirm_password_input.text) else False
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            height: 0
+            opacity: 0
+            on_release: app.root.current_screen.generate_()
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        Label:
+            id: registration_message
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            text: ''
+            color: 1, 0, 0, 1
+
+        Label:
+            font_size: '11sp'
+            height: dp(20)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            text: 'By registering you agree with our Privacy Policy and Terms of Service.'
+            color: 1, 1, 1, 1
+
+        MDRaisedButton:
+            id: register_btn
+            text: 'Register'
+            size_hint_y: None
+            height: dp(40)
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            size_hint_x: 1
+            font_size: '20sp'
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            on_release:
+                root.register(
+                first_name_input.text,
+                last_name_input.text,
+                email_input.text,
+                password_input.text,
+                confirm_password_input.text)
+                app.root.transition.direction = 'right'
+
+        MDRaisedButton:
+            text: 'Back to Login'
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            size_hint_y: None
+            height: dp(40)
+            font_size: '20sp'
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            size_hint_x: 1
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            on_release:
+                app.root.transition.direction = 'right'
+                app.root.current = 'login_view'

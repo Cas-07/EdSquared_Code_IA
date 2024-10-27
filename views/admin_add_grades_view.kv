@@ -1,0 +1,132 @@
+
+<AdminAddGradesView>:
+    name: 'admin_add_grades_view'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(60), dp(20), dp(20)]
+        spacing: 10
+
+        canvas.before:
+            Color:
+                rgba: (0.710, 0.471, 0.812, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # Label:
+        #     text: 'Add Grades'
+        #     font_size: '24sp'
+        #     color: 1, 1, 1, 1
+        #     size_hint: 1, 0.1
+        #     bold: True
+        #     font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+            padding: [dp(40), 0, 0, dp(10)]
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            Label:
+                text: 'Add Grades'
+                font_size: '24sp'
+                halign: 'center'
+                valign: 'center'
+                color: 1, 1, 1, 1
+                bold: True
+                size_hint_x: None
+                width: self.texture_size[0]
+
+            Widget:
+                width: dp(10)
+
+            MDIconButton:
+                icon: 'home'
+                icon_size: '35sp'
+                pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+                size_hint: None, None
+                size: dp(40), dp(40)
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                on_release:
+                    app.root.transition.direction = 'right'
+                    app.root.current = 'admin_dashboard_view'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+
+            Label:
+                text: 'Subject'
+                size_hint_x: 0.4
+                bold: True
+                color: 1, 1, 1, 1
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            Label:
+                text: 'Exam Type'
+                bold: True
+                size_hint_x: 0.4
+                color: 1, 1, 1, 1
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            Label:
+                text: 'Grade'
+                bold: True
+                size_hint_x: 0.2
+                color: 1, 1, 1, 1
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        ScrollView:
+            GridLayout:
+                id: grades_grid
+                cols: 3
+                height: self.minimum_height
+                spacing: 10
+                size_hint: 1, None
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+
+            MDRaisedButton:
+                id: add_subject_button
+                text: 'Add Subject'
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                background_normal: ''
+                background_color: 1, 1, 1, 1
+                color: 0, 0, 0, 1
+                size_hint_x: 0.9
+                height: dp(40)
+                md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                font_size: '19sp'
+                on_release: root.add_grades_row()
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            spacing: 10
+
+            MDRaisedButton:
+                text: '← Go Back'
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                background_normal: ''
+                background_color: 1, 1, 1, 1
+                color: 0, 0, 0, 1
+                md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                font_size: '19sp'
+                size_hint_x: 0.4
+                height: dp(40)
+                on_release:
+                    app.root.transition.direction = 'right'
+                    app.root.current = 'student_detail_view'
+
+            MDRaisedButton:
+                text: 'Save'
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                background_normal: ''
+                background_color: 1, 1, 1, 1
+                color: 0, 0, 0, 1
+                md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                font_size: '19sp'
+                size_hint_x: 0.4
+                height: dp(40)
+                on_release: root.save_grades()

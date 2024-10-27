@@ -1,0 +1,48 @@
+
+<StudentGradesView>:
+    name: 'student_grades_view'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(50), dp(20), dp(20)]
+        spacing: 10
+
+        canvas.before:
+            Color:
+                rgba: (0.710, 0.471, 0.812, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: 'View Grades'
+            font_size: '24sp'
+            color: 1, 1, 1, 1
+            size_hint: 1, 0.1
+            bold: True
+            font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+
+        ScrollView:
+            size_hint: 1, 0.8
+            GridLayout:
+                id: subjects_grid
+                cols: 3
+                spacing: [10, 30] 
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: dp(40)
+                row_force_default: True
+
+        MDRaisedButton:
+            text: '← Go to dashboard'
+            size_hint: 1, 0.1
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            height: dp(40)
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            font_size: '19sp'
+            size_hint_y: None
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            on_release:
+                app.root.transition.direction = 'right'
+                app.root.current = 'student_dashboard_view'

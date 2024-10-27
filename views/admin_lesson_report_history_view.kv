@@ -1,0 +1,95 @@
+<AdminLessonReportHistoryView>:
+    name: 'admin_lesson_report_history_view'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(60), dp(20), dp(20)]
+        spacing: 10
+
+        canvas.before:
+            Color:
+                rgba: (0.710, 0.471, 0.812, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # Label:
+        #     text: 'View Lesson Reports'
+        #     font_size: '22sp'
+        #     color: 1, 1, 1, 1
+        #     size_hint: 1, None
+        #     bold: True
+        #     font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+            padding: [dp(40), 0, 0, dp(10)]
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            Label:
+                text: 'View Lesson Reports'
+                font_size: '24sp'
+                halign: 'center'
+                valign: 'center'
+                color: 1, 1, 1, 1
+                bold: True
+                size_hint_x: None
+                width: self.texture_size[0]
+
+            Widget:
+                width: dp(10)
+
+            MDIconButton:
+                icon: 'home'
+                icon_size: '35sp'
+                pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+                size_hint: None, None
+                size: dp(40), dp(40)
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                on_release:
+                    app.root.transition.direction = 'right'
+                    app.root.current = 'admin_dashboard_view'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+
+            Label:
+                id: subject_label
+                text: ''
+                font_size: '19sp'
+                color: 1, 1, 1, 1
+                text_size: self.width, None
+                height: self.texture_size[1]
+                halign: 'center'
+                valign: 'middle'
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        ScrollView:
+            size_hint: 1, 0.1
+            GridLayout:
+                id: reports_grid
+                cols: 1
+                spacing: [0, dp(10)]
+                padding: [dp(10), 0, 0, 0]
+                size_hint: None, None
+                halign: "left"
+                height: self.minimum_height
+                # width: dp(400)
+                # row_default_height: dp(40)
+                row_force_default: False
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        MDRaisedButton:
+            text: '← Go Back'
+            size_hint: 1, None
+            height: dp(40)
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            font_size: '19sp'
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            on_release:
+                app.root.transition.direction = 'right'
+                app.root.current = 'subject_detail_view'

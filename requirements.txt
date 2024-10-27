@@ -1,0 +1,6 @@
+kivy
+kivymd
+pymysql
+cffi
+bcrypt
+requests

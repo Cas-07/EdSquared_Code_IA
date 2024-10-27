@@ -1,0 +1,116 @@
+<AdminHomeworkView>:
+    name: 'admin_homework_view'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(60), dp(20), dp(20)]
+        spacing: 5
+
+        canvas.before:
+            Color:
+                rgba: (0.710, 0.471, 0.812, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 0.15
+            spacing: 5
+            Label:
+                id: student_name
+                text: ''
+                font_size: '24sp'
+                bold: True
+                size_hint_x: 1
+                font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+
+            Label:
+                id: homework_header
+                text: ''
+                font_size: '24sp'
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                color: 0,255,0,1
+
+        # BoxLayout:
+        #     orientation: 'horizontal'
+        #     size_hint: 1, None
+        #     padding: [dp(40), 0, 0, dp(10)]
+        #     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        #     Label:
+        #         id: student_name
+        #         text: ''
+        #         font_size: '24sp'
+        #         halign: 'center'
+        #         valign: 'center'
+        #         color: 1, 1, 1, 1
+        #         bold: True
+        #         size_hint_x: None
+        #         width: self.texture_size[0]
+        #
+        #     Widget:
+        #         width: dp(10)
+        #
+        #     MDRaisedButton:
+        #         text: 'Home'
+        #         font_size: '24sp'
+        #         halign: 'center'
+        #         valign: 'center'
+        #         pos_hint: {'center_y': 0.5}
+        #         md_bg_color: 0.6667, 0.4196, 0.7765, 1
+        #         size_hint_x: None
+        #         bold: True
+        #         on_release:
+        #             app.root.transition.direction = 'right'
+        #             app.root.current='admin_dashboard_view'
+
+        # Label:
+        #     id: homework_header
+        #     text: ''
+        #     font_size: '24sp'
+        #     font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+        #     color: 0,255,0,1
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 1, 0.6
+
+            MDTextField:
+                id: homework_text
+                text: ''
+                mode: "fill"
+                multiline: True
+                background_color: 1, 1, 1, 1
+                foreground_color: 0, 0, 0, 1
+                size_hint_y: 1
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            spacing: 10
+
+            MDRaisedButton:
+                text: '← Go Back'
+                id: button1
+                background_color: 1, 1, 1, 1
+                color: 1, 1, 1, 1
+                size_hint_x: 0.4
+                height: dp(40)
+                md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                font_size: '19sp'
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                on_release:
+                    app.root.transition.direction = 'right'
+                    app.root.current = 'student_detail_view'
+
+            MDRaisedButton:
+                text: 'Save'
+                on_release: root.save_homework()
+                id: button2
+                background_color: 1, 1, 1, 1
+                color: 1, 1, 1, 1
+                size_hint_x: 0.4
+                height: dp(40)
+                md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                font_size: '19sp'
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'

@@ -1,0 +1,119 @@
+
+<StudentEditSubjectsView>:
+    name: 'student_edit_subjects_view'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(50), dp(20), dp(20)]
+        spacing: 10
+
+        canvas.before:
+            Color:
+                rgba: (0.710, 0.471, 0.812, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: 'Edit Subjects'
+            font_size: '24sp'
+            color: 1, 1, 1, 1
+            size_hint: 1, 0.1
+            bold: True
+            font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+###
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            spacing: 10
+
+            MDTextField: # Input field to search for subjects
+                id: search_box
+                mode: "round"
+                hint_text: 'Search for subjects...'
+                on_text: root.search_subject_keyword(self.text)
+                background_color: 1, 1, 1, 1
+                foreground_color: 0, 0, 0, 1
+                hint_text_color: 0.5, 0.5, 0.5, 1
+                size_hint_x: 0.8
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+            MDFillRoundFlatButton: # Button for adding subject
+                text: 'Add'
+                background_normal: ''
+                background_color: 1, 1, 1, 1
+                color: 0, 0, 0, 1
+                on_release: root.add_subject()
+                font_size: '19sp'
+                size_hint_x: 0.16
+                md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                line_color: 1,1,1,1
+                text_color: 1,1,1,1
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        RecycleView: # Where the search results (based on the search_box MDTextField) will appear
+            id: results_view
+            viewclass: 'SelectableLabel'
+            size_hint: 1, None
+            height: 0
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            RecycleBoxLayout:
+                default_size: None, dp(40)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                padding: [0, dp(20)]
+                BoxLayout:
+                    size_hint_y: None
+                    height: self.minimum_height
+                    orientation: 'vertical'
+                    padding: [0, dp(20)]
+                    pos_hint: {"center_x": 0.5}
+####
+        #Horizontal Line
+        Widget:
+            size_hint: 1, None
+            height: dp(1)
+            canvas:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+
+        ScrollView:
+            GridLayout:
+                id: subjects_grid
+                cols: 2
+                spacing: 10
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: dp(40)
+                row_force_default: True
+
+        MDRaisedButton:
+            text: '← Go to dashboard'
+            size_hint: 1, None
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            height: dp(40)
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            font_size: '19sp'
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            on_release:
+                app.root.transition.direction = 'right'
+                app.root.current = 'student_dashboard_view'
+###
+# Class used to fill the searchbox with the selected/clicked subject from the search results
+<SelectableLabel@Label>:
+    sub_id: None
+    text: ''
+    color: 1, 1, 1, 1
+    font_size: '13sp'
+    font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+    on_touch_down:
+        root.parent.parent.parent.parent.select_subject(self.sub_id, self.text) if self.collide_point(*args[1].pos) else None
+        root.parent.parent.parent.parent.update_recycleview_height(None)

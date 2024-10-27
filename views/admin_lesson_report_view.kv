@@ -1,0 +1,213 @@
+<AdminLessonReportView>:
+    name: 'admin_lesson_report_view'
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(80), dp(20), dp(20)]
+        spacing: dp(10)
+        md_bg_color: 0.710, 0.471, 0.812, 1  
+
+       
+        ScrollView:
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: dp(15)
+                padding: dp(10)
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(50)
+                    spacing: dp(10)
+                    padding: dp(10)
+                    anchor_x: 'center'  
+
+                    MDLabel:
+                        id: student_name
+                        text: ''
+                        font_style: 'H5'
+                        theme_text_color: 'Custom'
+                        text_color: 1, 1, 1, 1
+                        font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+                        halign: 'center'
+                        valign: 'middle' 
+                        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(40)
+                    padding: [dp(10), 0, 0, 0]
+                    anchor_x: 'center'
+
+                    MDLabel:
+                        id: subject_name
+                        text: ''
+                        font_style: 'Subtitle1'
+                        theme_text_color: 'Custom'
+                        text_color: 1, 1, 1, 1
+                        font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+                        halign: 'center'
+                        valign: 'middle'
+                        pos_hint: {'center_x': 0.5, 'center_y': 0.5}  
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(50)
+                    spacing: dp(10)
+
+                    MDRaisedButton:
+                        id: date_picker
+                        text: "Select Date"
+                        size_hint_x: 0.4
+                        md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                        font_size: '19sp'
+                        on_release: root.show_date_picker()
+
+                    MDTextField:
+                        id: subtopic_input
+                        hint_text: "Add Subtopic"
+                        size_hint_x: 0.6
+                        mode: "line"
+                        font_size: '19sp'
+                        text_color_normal: 1, 1, 1, 1
+                        text_color_focus: 1, 1, 1, 1
+                        line_color_focus: 1, 1, 1, 1
+                        current_hint_text_color: 1, 1, 1, 1
+                        hint_text_color_normal: 1, 1, 1, 1
+                        hint_text_color_focus: 1, 1, 1, 1
+                        md_bg_color: 0.6667, 0.4196, 0.7765, 1
+
+                MDTextField:
+                    id: report_input
+                    hint_text: "Write report here..."
+                    size_hint_y: None
+                    height: dp(100)
+                    mode: "line"
+                    font_size: '19sp'
+                    multiline: True
+                    text_color_normal: 1, 1, 1, 1
+                    text_color_focus: 1, 1, 1, 1
+                    line_color_focus: 1, 1, 1, 1
+                    current_hint_text_color: 1, 1, 1, 1
+                    hint_text_color_normal: 1, 1, 1, 1
+                    hint_text_color_focus: 1, 1, 1, 1
+                    md_bg_color: 0.6667, 0.4196, 0.7765, 1
+
+                MDTextField:
+                    id: lesson_link_input
+                    hint_text: "Add any additional content link"
+                    size_hint_y: None
+                    height: dp(100)
+                    mode: "line"
+                    font_size: '19sp'
+                    multiline: True
+                    text_color_normal: 1, 1, 1, 1
+                    text_color_focus: 1, 1, 1, 1
+                    line_color_focus: 1, 1, 1, 1
+                    current_hint_text_color: 1, 1, 1, 1
+                    hint_text_color_normal: 1, 1, 1, 1
+                    hint_text_color_focus: 1, 1, 1, 1
+                    md_bg_color: 0.6667, 0.4196, 0.7765, 1
+
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    size_hint: (None, None)
+                    height: dp(30)
+                    padding: [0, dp(0), 0, 0]  
+                    spacing: dp(1)  
+                    size: ("150dp", "100dp")
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.2}  
+
+                    MDSwitch:
+                        id: homework_toggle
+                        size_hint: None, None
+                        size: dp(50), dp(50)
+                        active: False
+                        halign: 'center'
+                        valign: 'middle'
+                        pos_hint: {'center_x': 0.25}
+                        on_active: root.homework_toggle(self.active)
+
+                    MDLabel:
+                        id: toggle_text
+                        text: "Homework not set"
+                        halign: 'center'
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        theme_text_color: 'Custom'
+                        pos_hint: {'center_x': 0.35}
+                        text_color: 1, 1, 1, 1
+                        valign: 'middle'
+
+
+                MDSpinner:
+                    id: spinner
+                    size_hint: None, None
+                    color: (1,1,1,1)
+                    size: dp(46), dp(46)
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    active: False
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: dp(130)
+            spacing: dp(10)
+            padding: [dp(10), 0, dp(10), 0]
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: dp(50)
+                spacing: dp(10)
+
+                MDRaisedButton:
+                    text: 'Write with AI'
+                    size_hint_x: 0.5
+                    md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                    font_size: '19sp'
+                    font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                    on_release: root.load_data()
+
+                MDRaisedButton:
+                    text: 'Save'
+                    size_hint_x: 0.5
+                    md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                    font_size: '19sp'
+                    font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                    on_release: root.save_lesson_report()
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: dp(50)
+                spacing: dp(10)
+
+                MDRaisedButton:
+                    text: '← Go Back'
+                    size_hint_x: 0.5
+                    height: dp(40)
+                    background_normal: ''
+                    background_color: 1, 1, 1, 1
+                    color: 0, 0, 0, 1
+                    md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                    font_size: '19sp'
+                    font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                    on_release:
+                        app.root.transition.direction = 'right'
+                        app.root.current = 'subject_detail_view'
+
+                MDRaisedButton:
+                    text: 'Reports'
+                    size_hint_x: 0.5
+                    height: dp(40)
+                    background_normal: ''
+                    background_color: 1, 1, 1, 1
+                    color: 0, 0, 0, 1
+                    md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                    font_size: '19sp'
+                    font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                    on_release: root.go_to_page("admin_lesson_report_history_view")

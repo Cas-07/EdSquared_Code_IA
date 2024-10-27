@@ -1,0 +1,145 @@
+
+<AdminFeedbackView>:
+    name: 'admin_feedback_view'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(60), dp(20), dp(20)]
+        spacing: 10
+
+        canvas.before:
+            Color:
+                rgba: (0.710, 0.471, 0.812, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+            # padding: [20, 0, 0, 0]
+            Label:
+                id: student_name
+                text: ''
+                font_size: '20sp'
+                color: 1, 1, 1, 1
+                font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+
+        # BoxLayout:
+        #     orientation: 'horizontal'
+        #     size_hint: 1, None
+        #     padding: [dp(40), 0, 0, dp(10)]
+        #     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        #     Label:
+        #         id: student_name
+        #         text: ''
+        #         font_size: '24sp'
+        #         halign: 'center'
+        #         valign: 'center'
+        #         color: 1, 1, 1, 1
+        #         bold: True
+        #         size_hint_x: None
+        #         width: self.texture_size[0]
+        #
+        #     Widget:
+        #         width: dp(10)
+        #
+        #     MDRaisedButton:
+        #         text: 'Home'
+        #         font_size: '24sp'
+        #         halign: 'center'
+        #         valign: 'center'
+        #         pos_hint: {'center_y': 0.5}
+        #         md_bg_color: 0.6667, 0.4196, 0.7765, 1
+        #         size_hint_x: None
+        #         bold: True
+        #         on_release:
+        #             app.root.transition.direction = 'right'
+        #             app.root.current='admin_dashboard_view'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+            # padding: [20, 0, 0, 0]
+            Label:
+                id: subject_name
+                text: ''
+                font_size: '19sp'
+                color: 1, 1, 1, 1
+                text_size: self.width, None
+                height: self.texture_size[1]
+                halign: 'center'
+                valign: 'middle'
+                font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+
+        Label:
+            text: 'Feedback'
+            font_size: '24sp'
+            color: 1, 1, 1, 1
+            size_hint: 1, 0.1
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        MDTextField:
+            id: feedback_text
+            text: ''
+            mode: "fill"
+            hint_text: 'Write your keywords here.'
+            multiline: True
+            size_hint: 1, 0.55
+            background_color: 1, 1, 1, 1
+            foreground_color: 0, 0, 0, 1
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        MDSpinner:
+            id: spinner
+            size_hint: None, None
+            color: (1,1,1,1)
+            size: dp(0), dp(0)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            active: False
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+            spacing: 10
+
+            MDRaisedButton:
+                text: 'Write with AI'
+                size_hint: 0.4, None
+                md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                font_size: '19sp'
+                background_normal: ''
+                background_color: 1, 1, 1, 1
+                color: 0, 0, 0, 1
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                on_release: root.load_data()
+
+            MDRaisedButton:
+                text: 'Save'
+                size_hint_x: 0.4
+                background_normal: ''
+                background_color: 1, 1, 1, 1
+                color: 0, 0, 0, 1
+                height: dp(40)
+                md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                font_size: '19sp'
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                on_release: root.save_feedback()
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            spacing: 10
+
+            MDRaisedButton:
+                text: '← Go Back'
+                size_hint_x: 0.9
+                height:dp(40)
+                background_normal: ''
+                background_color: 1, 1, 1, 1
+                color: 0, 0, 0, 1
+                md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                font_size: '19sp'
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                on_release:
+                    app.root.transition.direction = 'right'
+                    app.root.current = 'subject_detail_view'

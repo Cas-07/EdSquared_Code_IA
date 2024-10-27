@@ -1,0 +1,119 @@
+
+<StudentAddAdminView>:
+    name: 'student_add_admin_view'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(50), dp(20), dp(20)]
+        spacing: 10
+
+        canvas.before:
+            Color:
+                rgba: (0.710, 0.471, 0.812, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: 'Add Tutors'
+            font_size: '24sp'
+            color: 1, 1, 1, 1
+            size_hint: 1, 0.1
+            bold: True
+            font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 0.4
+            spacing: 10
+
+            MDTextField:
+                id: admin_code_box
+                mode: "round"
+                hint_text: 'Enter Tutor Code ....'
+                on_text: screen_msg.text = ''
+                background_color: 1, 1, 1, 1
+                foreground_color: 0, 0, 0, 1
+                hint_text_color: 0.5, 0.5, 0.5, 1
+                # size_hint_x: 0.8
+                pos_hint: {'center_x': 0.5}
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: 1, None
+                padding: [dp(30), dp(0), dp(30), dp(0)]
+                spacing: 10
+
+                MDFillRoundFlatButton:
+                    text: 'Add'
+                    background_normal: ''
+                    background_color: 1, 1, 1, 1
+                    color: 0, 0, 0, 1
+                    on_release: root.add_admin(admin_code_box.text)
+                    font_size: '19sp'
+                    size_hint_x: 0.3
+                    md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                    line_color: 1,1,1,1
+                    text_color: 1,1,1,1
+                    pos_hint: {'center_x': 0.5}
+                    font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+                MDFillRoundFlatButton:
+                    text: 'Remove'
+                    background_normal: ''
+                    background_color: 1, 1, 1, 1
+                    color: 0, 0, 0, 1
+                    on_release: root.remove_admin(admin_code_box.text)
+                    font_size: '19sp'
+                    size_hint_x: 0.3
+                    md_bg_color: 0.6667, 0.4196, 0.7765, 1
+                    line_color: 1,1,1,1
+                    text_color: 1,1,1,1
+                    pos_hint: {'center_x': 0.5}
+                    font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+            Label:
+                id: screen_msg
+                text: ''
+                height: 0 if self.text == '' else dp(30)
+                font_size: '19sp'
+                color: 1, 0, 0, 1
+                size_hint: 1, None
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+
+            Widget:
+                size_hint: 1, None
+                height: dp(1)
+                canvas:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+        ScrollView:
+            GridLayout:
+                id: admin_grid
+                cols: 1
+                spacing: 10
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: dp(40)
+                row_force_default: True
+
+        MDRaisedButton:
+            text: '← Go to dashboard'
+            size_hint_x: 1
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: dp(40)
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            font_size: '19sp'
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            on_release:
+                app.root.transition.direction = 'right'
+                app.root.current = 'student_dashboard_view'

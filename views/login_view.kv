@@ -1,0 +1,138 @@
+
+<LoginView>:
+    name: 'login_view'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(50), dp(20), dp(20)]
+        spacing: 10
+
+        canvas.before:
+            Color:
+                rgba: (0.710, 0.471, 0.812, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: 'Login'
+            font_size: '32sp'
+            color: 1, 1, 1, 1
+            bold: True
+            font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+
+        Image:
+            source: 'utils/graphics/logo.png'
+
+        Widget:
+            size_hint_y: 0.1
+
+        MDTextField: # Input field for retrieving email from the user
+            id: email_input # The contents and attributes of this field can be accessed using the id, through the controllers
+            hint_text: 'Email'
+            mode: "line"
+            multiline: False
+            # Setting the colour of the textfield
+            text_color_normal: 1, 1, 1, 1
+            text_color_focus: 1, 1, 1, 1
+            line_color_focus: 1, 1, 1, 1
+            current_hint_text_color: 1, 1, 1, 1
+            hint_text_color_normal: 1, 1, 1, 1
+            hint_text_color_focus: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(40)
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        MDTextField: # Input field for retrieving password from the user
+            id: password_input # The contents and attributes of this field can be accessed using the id, through the controllers
+            hint_text: 'Password'
+            password: True
+            mode: "line"
+            # Setting the colour of the textfield
+            hint_text_color_normal: 1, 1, 1, 1
+            text_color_normal: 1, 1, 1, 1
+            text_color_focus: "white"
+            line_color_focus: 1, 1, 1, 1
+            text_color_normal: 1, 1, 1, 1
+            hint_text_color_normal: 1, 1, 1, 1
+            hint_text_color_focus: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(40)
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: self.minimum_size
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            MDCheckbox: # Checking if the user is a tutor or student
+                id: admin_checkbox
+                size_hint: None, None
+                size: dp(40), dp(40)
+
+            Label:
+                text: 'Tutor'
+                font_size: '22sp'
+                color: 1, 1, 1, 1
+                size_hint_x: None
+                height: dp(40)
+                font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+                width: self.texture_size[0]
+                # pos_hint: {'center_y': 0.4}
+
+        MDFlatButton:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            text: 'Forgot Password?'
+            font_size: '16sp'
+            theme_text_color: 'Custom'
+            text_color: 1, 1, 1, 1
+            font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+            on_release:
+                app.root.transition.direction = 'left'
+                app.root.current = 'reset_password_view'
+
+        MDFlatButton:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            text: 'Contact Us'
+            font_size: '16sp'
+            theme_text_color: 'Custom'
+            text_color: 1, 1, 1, 1
+            font_name: 'utils/font/GalanoGrotesqueAltBold.ttf'
+            on_release:
+                app.root.transition.direction = 'left'
+                app.root.current = 'contact_us_view'
+
+        Label:
+            id: login_message
+            text: ''
+            color: 1, 0, 0, 1
+
+        MDRaisedButton:
+            text: 'Login'
+            size_hint_x: 1
+            font_size: '20sp'
+            height: dp(40)
+            style: "elevated"
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            on_release:
+                app.root.transition.direction = 'left'
+                root.login(email_input.text, password_input.text)
+
+        MDRaisedButton:
+            text: 'Register'
+            size_hint_y: None
+            size_hint_x: 1
+            font_size: '20sp'
+            height: dp(40)
+            md_bg_color: 0.6667, 0.4196, 0.7765, 1
+            background_normal: ''
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            font_name: 'utils/font/GalanoGrotesqueAltMedium.ttf'
+            on_release:
+                app.root.transition.direction = 'left'
+                app.root.current = 'registration_view'
